@@ -1,0 +1,17 @@
+copy-paste              ETHAN
+repaire3                ALEX
+image difference        ETHAN
+bank - spamclick        ETHAN
+timed permissions       ETHAN
+12-digit code WASM      BAP
+cuitochette             BAP
+web js app              BAP
+morse parser            MATTEO
+join_fragmenst          MATTEO
+evlang - emojis         MATTEO
+regexp                  MATTEO
+nmea                    BAP
+PS                      ALEX
+PS2                     ALEX
+grpc                    BAP
+

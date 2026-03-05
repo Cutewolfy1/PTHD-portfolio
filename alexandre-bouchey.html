@@ -3,132 +3,135 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Problématiques Résolues - Cybersécurité</title>
+    <title>NGGYU - Alexandre Bouchey</title>
     <link rel="stylesheet" href="style.css" />
 </head>
 <body>
     <header>
-        <h1>Problématiques Résolues</h1>
+        <h1>Alexandre Bouchey</h1>
     </header>
 
     <nav>
-        <a href="#recrue">La Recrue</a>
-        <a href="#repaire1">Le Repaire Partie 1</a>
-        <a href="#repaire2">Le Repaire Partie 2</a>
-        <a href="#traque2">La Traque Partie 2</a>
+        <a class="important-link" href="/index.html">Accueil</a>
+        <br/>
+        <a href="#traque1">La Traque - Partie 1</a>
+        <a href="#repaire3">Le Repaire - Partie 3</a>
+        <a href="#petite-sieste1">Petite Sieste - Patie 1</a>
+        <a href="#petite-sieste2">Petite Sieste - Patie 2</a>
     </nav>
 
     <main>
-        <!-- Problématique 1 : La Recrue -->
-        <section id="recrue">
-            <h2>Problématique : La Recrue</h2>
+        <section id="traque1">
+            <h2>Problématique : La Traque - Partie 1</h2>
 
             <h3>Énoncé / Descriptif</h3>
             <p>
-                Dans ce défi, il était demandé de trouver un flag caché dans un CV au format PDF.
-                Pour ce faire, il était nécessaire d'utiliser la combinaison de touches <code>Ctrl + A</code>
-                afin de sélectionner tout le texte, y compris le texte caché, puis de copier et coller le flag sur la plateforme.
+                Dans ce défi, il était demandé de trouver l'aéroport de destination et la place du passager depuis une photo affichant l'orientation l'avion (sachant son point de départ).
             </p>
 
             <h3>Résolution</h3>
+            <strong>Déterminer la place du passager</strong>
             <ol>
-                <li>Ouvrir le fichier PDF du CV.</li>
-                <li>Appuyer sur <code>Ctrl + A</code> pour sélectionner tout le texte, y compris le texte caché.</li>
-                <li>Copier le texte sélectionné.</li>
-                <li>Coller le texte dans un éditeur de texte pour identifier le flag.</li>
-                <li>Soumettre le flag <code>FLAG{You_C4n'T_SeE_M3}</code> sur la plateforme.</li>
+                <li>Le modèle de l'avion était donné dans l'énoncé et la compagnie aérienne était facilement lisible sur l'image.</li>
+                <li>Trouver un plan de cabine correspondant à un Airbus <code>A321neo</code> de la compagnie aérienne <code>DELTA</code>.</li>
+                <li>Identifier les places près de l'aile (correspondant au point de vue de la vidéo): <code>14F-15F</code>.</li>
+            </ol>
+            <strong>Déterminer l'aéroport d'arrivée</strong>
+            <ol>
+                <li>On connait l'orientation de l'avion <code>30°</code> grâce à l'image et la ville de départ Las Vegas.</li>
+                <li>Se procurer un plan des USA où les grandes villes y sont annotées.</li>
+                <li>Tracer une droite sur le plan passant par Las Vegas et d'orientation 30° et récupérer les villes les plus proches de la droite.</li>
+                <li>On trouve Salt Lake City, Billings, Regina. Seul Salt Lake City possède un aéroport.</li>
+                <li>Rechercher le trigramme de l'aéroport: <code>SLC</code>.</li>
             </ol>
 
             <h3>Outil(s) / Ressource(s) utilisé(s)</h3>
             <ul>
-                <li>Un lecteur PDF (Adobe Acrobat Reader, Foxit Reader, etc.).</li>
-                <li>Un éditeur de texte (Notepad, VS Code, etc.).</li>
+                <li>Google image search</li>
+                <li>Google maps</li>
+                <li>GIMP et trigonométrie (pour tracer la droite)</li>
             </ul>
 
             <h3>Difficulté(s) rencontrée(s)</h3>
             <p>
-                Au début, je n'ai pas pensé à utiliser <code>Ctrl + A</code> pour révéler le texte caché.
-                J'ai d'abord essayé de lire le PDF normalement, sans succès.
+                Au début, je n'ai pensé que chaque compagnie aérienne avait leur prope disposition de siège et donc le plan de cabine que j'avais trouvé ne correspondait pas.
+                <br/>
+                La place était difficile à déterminer précisément. J'ai dû essayer plusieurs numéros de sièges.
             </p>
 
             <h3>Ce que j’ai appris</h3>
             <ul>
-                <li>Les fichiers PDF peuvent contenir du texte caché.</li>
-                <li>L'utilisation de <code>Ctrl + A</code> peut révéler des informations invisibles à l'œil nu.</li>
-                <li>Il est important de tester différentes méthodes pour accéder aux informations cachées.</li>
+                <li>Chaque compagnie aérienne dispose de son propre plan de cabine.</li>
             </ul>
 
             <h3>Captures d’écran</h3>
             <figure>
-                <img src="/assets/2_revealed_text.jpeg" alt="CV de Jasmine Orlowska avec le texte caché révélé">
+                <img src="/assets/image_traque_2.jpg" alt="Image de synthèse de la trajectoire d'un avion survolant les USA">
                 <figcaption>
-                    Capture d'écran du CV de Jasmine Orlowska avec le texte caché révélé après avoir utilisé <code>Ctrl + A</code>.
+                    Image de la trajectoire de l'avion où on trouve son orientation.
                 </figcaption>
             </figure>
             <figure>
-                <img src="/assets/2_flag_submit.jpeg" alt="Flag soumis sur la plateforme">
+                <img src="/assets/la_traque_trigo.png" alt="Explication de la géométrie pour trouver les villes plausibles">
                 <figcaption>
-                    Capture d'écran montrant le flag <code>FLAG{You_C4n'T_SeE_M3}</code> soumis sur la plateforme.
+                    Schéma de la trajectoire de l'avion.
                 </figcaption>
             </figure>
         </section>
 
-        <!-- Problématique 2 : Le Repaire Partie 1 -->
-        <section id="repaire1">
-            <h2>Problématique : Le Repaire Partie 1</h2>
+        <section id="repaire3">
+            <h2>Problématique : Le Repaire - Partie 3</h2>
 
             <h3>Énoncé / Descriptif</h3>
             <p>
-                Dans ce défi, il était demandé d'identifier une base de pirates à l'aide d'une modélisation 3D de Paris.
-                Nous devions trouver le bâtiment situé à gauche de l'image fournie.
-                Il s'agissait du Panthéon, ce qui a permis d'obtenir le flag.
+                Dans ce défi, il était demandé de déchiffrer une énigme:
+                <br/>
+                <q>
+                    Il prendra le métro rose.
+                    <br/>
+                    Il descendra deux arrêts après le musée.
+                    <br/>
+                    A cet endroit, il incrémentera de un son métro
+                    <br/>
+                    et descendra à la fin.
+                </q>
             </p>
 
             <h3>Résolution</h3>
             <ol>
-                <li>Analyser la modélisation 3D de Paris pour identifier les bâtiments caractéristiques.</li>
-                <li>Repérer le bâtiment de gauche sur l'image.</li>
-                <li>Reconnaître le Panthéon grâce à son architecture distinctive (dôme, colonnes).</li>
-                <li>Soumettre le flag <code>FLAG{panthéon}</code> sur la plateforme.</li>
+                <li>On sait que l'on se trouve à Paris car c'est le contexte des défis précédents.</li>
+                <li>On identifie le métro rose: c'est la ligne 7.</li>
+                <li>Ne conaissant pas Paris, j'aurais pu demander à une IA les musées desservis par la ligne 7 mais j'ai repéré l'arrêt <code>Palais Royal Musée du Louvre</code>.</li>
+                <li>Dans un des deux sens, deux arrêts après le Louvre, on trouve une correspondance avec la ligne 8 (7 incrémenté) à l'arrêt <code>Opéra</code>.</li>
+                <li>En testant les deux terminus de la ligne 8 en drapeaux, on trouve que le bon drapeau est <code>FLAG{balard}</code>.</li>
             </ol>
 
             <h3>Outil(s) / Ressource(s) utilisé(s)</h3>
             <ul>
-                <li>Modélisation 3D de Paris (fichier ou logiciel de visualisation 3D).</li>
-                <li>Connaissances en architecture parisienne.</li>
+                <li>Les services de la RATP (plans)</li>
             </ul>
 
             <h3>Difficulté(s) rencontrée(s)</h3>
             <p>
-                Au début, il était difficile de distinguer les détails architecturaux sur la modélisation 3D.
-                J'ai dû zoomer et analyser attentivement chaque bâtiment pour identifier le Panthéon.
+                Je n'ai pas rencontré de difficulté pour ce challenge.
             </p>
 
             <h3>Ce que j’ai appris</h3>
             <ul>
-                <li>L'importance de connaître les monuments emblématiques pour résoudre des énigmes visuelles.</li>
-                <li>L'utilisation de la modélisation 3D pour identifier des lieux réels.</li>
-                <li>La patience et la persévérance pour analyser des détails complexes.</li>
+                <li>Il y a beaucoup de lignes de métro à Paris</li>
             </ul>
 
             <h3>Captures d’écran</h3>
             <figure>
-                <img src="/assets/3_pantheon_3d.png" alt="Modélisation 3D de Paris avec le Panthéon">
+                <img src="/assets/plan_metro_paris.png" alt="Carte des lignes de métro à Paris">
                 <figcaption>
-                    Capture d'écran de la modélisation 3D de Paris montrant le Panthéon à gauche.
-                </figcaption>
-            </figure>
-            <figure>
-                <img src="/assets/3_flag_submit.jpeg" alt="Flag soumis pour le Panthéon">
-                <figcaption>
-                    Capture d'écran montrant le flag <code>FLAG{panthéon}</code> soumis sur la plateforme.
+                    Carte m'ayant permis de résoudre le challenge. Source: RATP
                 </figcaption>
             </figure>
         </section>
 
-        <!-- Problématique 3 : Le Repaire Partie 2 -->
-        <section id="repaire2">
-            <h2>Problématique : Le Repaire Partie 2</h2>
+        <section id="petite-sieste1">
+            <h2>Problématique : Petite Sieste - Partie 1</h2>
 
             <h3>Énoncé / Descriptif</h3>
             <p>
@@ -247,7 +250,11 @@
     </main>
 
     <footer>
-        <p><a href="index.html">Retour à l'accueil de l'équipe</a></p>
+        <p>
+            <a href="#">Retour en haut de la page</a>
+            |
+            <a href="index.html">Retour à l'accueil de l'équipe</a>
+        </p>
     </footer>
 </body>
 </html>
