@@ -15,12 +15,12 @@ header {
     color: white;
     padding: 10px 20px;
     text-align: center;
+
 }
 
 nav {
     background-color: #f4f4f4;
     padding: 10px;
-    margin-bottom: 20px;
 }
 
 nav a {
@@ -33,7 +33,8 @@ section {
     margin: 20px 0;
     padding: 20px;
     border: 1px solid #ddd;
-    border-radius: 5px;
+    border-radius: 20px;
+    background-color: #eeeeee;
 }
 
 h1 {
@@ -74,3 +75,8 @@ ul {
     list-style: none;
     padding: 0;
 }
+
+img {
+    max-width: 100%;
+}
+
