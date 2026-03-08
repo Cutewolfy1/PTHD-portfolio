@@ -3,251 +3,216 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Problématiques Résolues - Cybersécurité</title>
+    <title>NGGYU - Ethan Plouvier</title>
     <link rel="stylesheet" href="style.css" />
 </head>
 <body>
     <header>
-        <h1>Problématiques Résolues</h1>
+        <h1>Ethan Plouvier</h1>
     </header>
 
     <nav>
-        <a href="#recrue">La Recrue</a>
-        <a href="#repaire1">Le Repaire Partie 1</a>
-        <a href="#repaire2">Le Repaire Partie 2</a>
-        <a href="#traque2">La Traque Partie 2</a>
+        <a class="important-link" href="/index.html">Accueil</a>
+        <br/>
+        <a href="#bienvenue">Bienvenue</a>
+        <a href="#archive-manquante">Archive manquante</a>
+        <a href="#4d-secure">4-D Sécure</a>
+        <a href="#competition-sur-la-toile">Compétition sur la toile</a>
     </nav>
 
     <main>
-        <!-- Problématique 1 : La Recrue -->
-        <section id="recrue">
-            <h2>Problématique : La Recrue</h2>
+        <section id="bienvenue">
+            <h2>Problématique : Bienvenue</h2>
 
             <h3>Énoncé / Descriptif</h3>
             <p>
-                Dans ce défi, il était demandé de trouver un flag caché dans un CV au format PDF.
-                Pour ce faire, il était nécessaire d'utiliser la combinaison de touches <code>Ctrl + A</code>
-                afin de sélectionner tout le texte, y compris le texte caché, puis de copier et coller le flag sur la plateforme.
+                C'est le premier défi de la chasse aux drapeaux.
             </p>
 
             <h3>Résolution</h3>
             <ol>
-                <li>Ouvrir le fichier PDF du CV.</li>
-                <li>Appuyer sur <code>Ctrl + A</code> pour sélectionner tout le texte, y compris le texte caché.</li>
-                <li>Copier le texte sélectionné.</li>
-                <li>Coller le texte dans un éditeur de texte pour identifier le flag.</li>
-                <li>Soumettre le flag <code>FLAG{You_C4n'T_SeE_M3}</code> sur la plateforme.</li>
+                <li>Lire <strong>attentivement</strong> l'énoncé</li>
+                <li>Soumettre le flag <code>FLAG{W3lCOm3_On_BO4rD}</code></li>
             </ol>
 
             <h3>Outil(s) / Ressource(s) utilisé(s)</h3>
-            <ul>
-                <li>Un lecteur PDF (Adobe Acrobat Reader, Foxit Reader, etc.).</li>
-                <li>Un éditeur de texte (Notepad, VS Code, etc.).</li>
-            </ul>
+            <p>Aucun</p>
 
             <h3>Difficulté(s) rencontrée(s)</h3>
             <p>
-                Au début, je n'ai pas pensé à utiliser <code>Ctrl + A</code> pour révéler le texte caché.
-                J'ai d'abord essayé de lire le PDF normalement, sans succès.
+                J'ai lu trop rapidement l'énoncé et je ne trouvais pas où était le champ de réponse.
             </p>
 
             <h3>Ce que j’ai appris</h3>
             <ul>
-                <li>Les fichiers PDF peuvent contenir du texte caché.</li>
-                <li>L'utilisation de <code>Ctrl + A</code> peut révéler des informations invisibles à l'œil nu.</li>
-                <li>Il est important de tester différentes méthodes pour accéder aux informations cachées.</li>
+                <li>Lire attentivement les consignes.</li>
             </ul>
 
             <h3>Captures d’écran</h3>
             <figure>
-                <img src="/assets/2_revealed_text.jpeg" alt="CV de Jasmine Orlowska avec le texte caché révélé">
+                <img src="/assets/instructions_bienvenue.png" alt="Capture d'écran de la plateforme Passe Ton Hack D'abord où on voit l'énoncé de la première épreuve">
                 <figcaption>
-                    Capture d'écran du CV de Jasmine Orlowska avec le texte caché révélé après avoir utilisé <code>Ctrl + A</code>.
-                </figcaption>
-            </figure>
-            <figure>
-                <img src="/assets/2_flag_submit.jpeg" alt="Flag soumis sur la plateforme">
-                <figcaption>
-                    Capture d'écran montrant le flag <code>FLAG{You_C4n'T_SeE_M3}</code> soumis sur la plateforme.
+                    Énoncé de la première épreuve où le flag est écrit. 
                 </figcaption>
             </figure>
         </section>
 
-        <!-- Problématique 2 : Le Repaire Partie 1 -->
-        <section id="repaire1">
-            <h2>Problématique : Le Repaire Partie 1</h2>
+        <section id="archive-manquante">
+            <h2>Problématique : Archive Manquante</h2>
 
             <h3>Énoncé / Descriptif</h3>
             <p>
-                Dans ce défi, il était demandé d'identifier une base de pirates à l'aide d'une modélisation 3D de Paris.
-                Nous devions trouver le bâtiment situé à gauche de l'image fournie.
-                Il s'agissait du Panthéon, ce qui a permis d'obtenir le flag.
+                Dans cette épreuve, je devais analyser 2 images pour en extraire et comprendre la différence.
             </p>
 
             <h3>Résolution</h3>
             <ol>
-                <li>Analyser la modélisation 3D de Paris pour identifier les bâtiments caractéristiques.</li>
-                <li>Repérer le bâtiment de gauche sur l'image.</li>
-                <li>Reconnaître le Panthéon grâce à son architecture distinctive (dôme, colonnes).</li>
-                <li>Soumettre le flag <code>FLAG{panthéon}</code> sur la plateforme.</li>
+                <li>Première visualisation des images, elles semblent identiques.</li>
+                <li>Importation des images dans un logiciel d'édition d'image (GIMP).</li>
+                <li>Afficher la différence entre 2 calques. On obtient une image noire.</li>
+                <li>L'image obtenu n'est pas totalement noire, il y a plusieurs nuances de noir.</li>
+                <li>En sélectionnant par couleur on aperçoit déja le flag: <code>FLAG{S4me_1mage_d1fferent_1mage}</code>.</li>
+                <li>Après analyse, on se rend compte que la différence renvoie une image avec 4 nuances de noir, mais seul le "vrai" noir (<code>#000000</code>) dessine le flag.</li>
             </ol>
 
             <h3>Outil(s) / Ressource(s) utilisé(s)</h3>
             <ul>
-                <li>Modélisation 3D de Paris (fichier ou logiciel de visualisation 3D).</li>
-                <li>Connaissances en architecture parisienne.</li>
+                <li>Un visualisateur d'image</li>
+                <li>Un éditeur d'image (GIMP)</li>
             </ul>
 
             <h3>Difficulté(s) rencontrée(s)</h3>
             <p>
-                Au début, il était difficile de distinguer les détails architecturaux sur la modélisation 3D.
-                J'ai dû zoomer et analyser attentivement chaque bâtiment pour identifier le Panthéon.
+                Quand j'ai obtenu le résultat de la première différence, je m'attendais à découvrir le flag directement, quand j'ai vu une image noire, j'ai cru que je m'étais trompé et j'ai abandonné cette piste.
+                <br/>
+                J'ai oublié de combiner les calques: je voyais la différence des images mais quand je sélectionnait par couleur, le logiciel sélectionnait en fonction des couleurs du calque.
             </p>
 
             <h3>Ce que j’ai appris</h3>
             <ul>
-                <li>L'importance de connaître les monuments emblématiques pour résoudre des énigmes visuelles.</li>
-                <li>L'utilisation de la modélisation 3D pour identifier des lieux réels.</li>
-                <li>La patience et la persévérance pour analyser des détails complexes.</li>
+                <li>Introduction au logiciels d'édition d'image.</li>
+                <li>Deux images qui apparaissent identiques ne le sont pas forcément.</li>
             </ul>
 
             <h3>Captures d’écran</h3>
             <figure>
-                <img src="/assets/3_pantheon_3d.png" alt="Modélisation 3D de Paris avec le Panthéon">
+                <img src="/assets/6_image_comparison.png" alt="Deux images identiques d'une vue aérienne d'une ville la nuit affichées dans un visualisateur d'image">
                 <figcaption>
-                    Capture d'écran de la modélisation 3D de Paris montrant le Panthéon à gauche.
+                    Les deux images fournies par le défi, elles semblent identiques.
                 </figcaption>
             </figure>
             <figure>
-                <img src="/assets/3_flag_submit.jpeg" alt="Flag soumis pour le Panthéon">
+                <img src="/assets/flag_selectioin.png" alt="Du texte reconnaissable parmi un bruit de pixel noir et blanc">
                 <figcaption>
-                    Capture d'écran montrant le flag <code>FLAG{panthéon}</code> soumis sur la plateforme.
+                    La sélection de pixels révèle déja le flag "<code>FLAG{S4me_1mage_d1fferent_1mage}</code>".
+                </figcaption>
+            </figure>
+            <figure>
+                <img src="/assets/extracted_flag.png" alt="Un texte noir parmi un bruit de pixel cyan, rouge et jaune">
+                <figcaption>
+                    La différence des deux images avec chaque nuance de noir recolorée.
                 </figcaption>
             </figure>
         </section>
 
-        <!-- Problématique 3 : Le Repaire Partie 2 -->
-        <section id="repaire2">
-            <h2>Problématique : Le Repaire Partie 2</h2>
+        <section id="4d-secure">
+            <h2>Problématique : 4-D Sécure</h2>
 
             <h3>Énoncé / Descriptif</h3>
             <p>
-                Pour ce défi, il était demandé de trouver un nom de rue à moitié identifiable sur une partie zoomée de la modélisation 3D précédente.
-                On pouvait identifier un nom de rue commençant par "T" et finissant par "fort".
-                Il suffisait de chercher un nom de rue similaire sur Google Maps proche du Panthéon.
+                Pour résoudre ce challenge, il fallait obtenir 9000 crédits sur une banque en ligne pour pouvoir acheter le flag. Cette banque proposait seulement de créer un compte, transférer de l'argent d'un compte à un autre ou d'acheter le flag.
             </p>
 
             <h3>Résolution</h3>
             <ol>
-                <li>Analyser la partie zoomée de la modélisation 3D pour repérer les indices sur le nom de la rue.</li>
-                <li>Identifier que le nom de la rue commence par "T" et finit par "fort".</li>
-                <li>Rechercher sur Google Maps les rues proches du Panthéon qui correspondent à ce motif.</li>
-                <li>Trouver la rue "Tournefort" qui correspondait aux critères.</li>
-                <li>Soumettre le flag <code>FLAG{rue_tournefort}</code> sur la plateforme.</li>
+                <li>Première approche de l'application web: création d'un profil et exécution d'un transfert d'argent.</li>
+                <li>Les transactions se font ainsi: Vérification des fonds (si l'utilisateur possède assez d'argent), ajout des fonds sur le compte de destination, retrait des fonds du compte de départ.</li>
+                <li>Entre chaque opération, il y a un délai de 3 à 6 secondes ce qui veut dire que pendant 3 secondes, les fonds sont à la fois sur le compte de départ et sur celui de destination. C'est pourquoi, pendant quelques secondes, le montant de la transaction est dupliqué.</li>
+                <li>On appuie alors rapidement 9 fois de suite sur le bouton <code>Lancer la transaction</code> avec un montant de 1000. Pendant quelques secondes, on aura alors <code>10x1000 = 10000 &gt; 9000</code> ce qui est assez pour acheter le flag.</li>
+                <li>Soumettre le flag <code>FLAG{It's_0v3r_9O0O!!}</code> sur la plateforme.</li>
             </ol>
 
             <h3>Outil(s) / Ressource(s) utilisé(s)</h3>
-            <ul>
-                <li>Modélisation 3D de Paris.</li>
-                <li>Google Maps.</li>
-            </ul>
+            <p>Aucun</p>
 
             <h3>Difficulté(s) rencontrée(s)</h3>
             <p>
-                La difficulté principale était de bien distinguer les lettres sur la modélisation 3D, car elles étaient partiellement visibles.
-                Il a fallu faire preuve de logique et de déduction pour identifier le nom de la rue.
+                Aucune
             </p>
 
             <h3>Ce que j’ai appris</h3>
             <ul>
-                <li>L'importance de l'observation minutieuse pour repérer des détails dans une image.</li>
-                <li>L'utilisation de Google Maps pour valider des hypothèses sur des lieux réels.</li>
-                <li>La capacité à déduire des informations à partir d'indices partiels.</li>
+                <li>J'ai pu découvrir un autre aspect de la cybersécurité: les attaques basées sur les timings.</li>
+                <li>Ce n'est pas parce qu'une entreprise dit qu'elle est sécurisée, qu'elle l'est vraiment.</li>
             </ul>
 
             <h3>Captures d’écran</h3>
             <figure>
-                <img src="/assets/4_rue_tournefort.png" alt="Modélisation 3D zoomée montrant la rue partiellement identifiable">
+                <img src="/assets/transaction_ui.png" alt="Interface web permettant de réaliser une transaction">
                 <figcaption>
-                    Capture d'écran de la modélisation 3D zoomée montrant la rue partiellement identifiable.
+                    Capture d'écran de l'interface de transaction.
                 </figcaption>
             </figure>
             <figure>
-                <img src="/assets/4_google_maps.png" alt="Google Maps montrant la rue Tournefort">
+                <img src="/assets/bank_flag.png" alt="Interface web avec une fenêtre mise en avant affichant le flag secret">
                 <figcaption>
-                    Capture d'écran de Google Maps montrant la rue Tournefort proche du Panthéon.
+                    Après la série de transaction, j'ai pu acheter le flag secret.
                 </figcaption>
             </figure>
-            <!--<figure>
-                <img src="/assets/" alt="Flag soumis pour la rue Tournefort">
-                <figcaption>
-                    Capture d'écran montrant le flag <code>FLAG{rue_tournefort}</code> soumis sur la plateforme.
-                </figcaption>
-            </figure> --!>
-        </section>
+       </section>
 
-        <!-- Problématique 4 : La Traque Partie 2 -->
-        <section id="traque2">
-            <h2>Problématique : La Traque Partie 2</h2>
+        <section id="competition-sur-la-toile">
+            <h2>Problématique : Compétition sur la toile</h2>
 
             <h3>Énoncé / Descriptif</h3>
             <p>
-                Dans ce défi, il était demandé d'identifier la piste d'un aéroport provenant d'une ville inconnue.
-                Le flag devait être écrit sous la forme : <code>FLAG{trigramme_de_l'aéroport:nom_de_la_piste}</code>.
-                Pour résoudre ce challenge, il fallait d'abord identifier la ville et l'aéroport, puis déterminer la piste exacte.
+                Le but était d'obtenir des informations réservés aux chefs en étant subordonné. Le système de promotion était vulnérable.
             </p>
 
             <h3>Résolution</h3>
             <ol>
-                <li>Analyser l'image de l'aéroport pour identifier des indices visuels (bâtiments, paysages, etc.).</li>
-                <li>Utiliser Internet pour identifier la ville et l'aéroport : il s'agissait de Las Vegas, avec le trigramme <code>LAS</code>.</li>
-                <li>Utiliser une IA ou une recherche en ligne pour lister toutes les pistes de l'aéroport de Las Vegas.</li>
-                <li>Tester chaque combinaison possible pour le flag.</li>
-                <li>Soumettre le flag <code>FLAG{LAS:26R}</code> sur la plateforme.</li>
+                <li>Analyse de l'application web: on peut consulter les informations ou demander une promotion. Au début, on ne dispose pas d'informations.</li>
+                <li>La procédure pour promouvoir un utilisateur se déroule ainsi: promouvoir l'utilisateur <code>Chef</code>, attendre la confirmation du serveur tout en empêchant l'utilisateur de retourner à la page d'accueil. Dans tous les cas, la requête sera rejetée donc: dégrader l'utilisateur <code>Subordonné</code>.</li>
+                <li>Bien que l'on ne puisse pas retourner à la page d'accueil pour récupérer les informations durant la promotion. On peut ouvrir deux pages web: une pour se faire promouvoir et l'autre demandant les informations pendant le temps où on est promu.</li>
+                <li>Soumettre le flag sur la plateforme.</li>
             </ol>
 
             <h3>Outil(s) / Ressource(s) utilisé(s)</h3>
-            <ul>
-                <li>Internet (recherche d'images et d'informations sur les aéroports).</li>
-                <li>IA ou outils en ligne pour lister les pistes de l'aéroport.</li>
-            </ul>
+            <p>Aucun</p>
 
             <h3>Difficulté(s) rencontrée(s)</h3>
             <p>
-                La difficulté principale était d'identifier la ville et l'aéroport à partir d'une simple image.
-                Ensuite, il fallait être méthodique pour tester chaque combinaison de piste afin de trouver la bonne.
+                La difficulté principale était de ne pas faire de fautes d'orthographe sur le nom d'utilisateur et le mot de passe donnés pour se connecter (<code>Roger:password</code>).
             </p>
 
             <h3>Ce que j’ai appris</h3>
             <ul>
-                <li>L'importance de l'analyse visuelle pour identifier des lieux à partir d'images.</li>
-                <li>L'utilisation d'outils en ligne et d'IA pour compléter des informations manquantes.</li>
-                <li>La persévérance et la méthode pour tester différentes combinaisons.</li>
+                <li>Ce challenge est un autre exemple d'attaque de timings et un exemple d'escalation de privilèges.</li>
+                <li>Les restrictions faites sur le navigateur du client sont contournables.</li>
             </ul>
 
             <h3>Captures d’écran</h3>
             <figure>
-                <img src="/assets/instructions_la_traque_2.png" alt="Description du défi La Traque Partie 2">
+                <img src="/assets/roger_ui.png" alt="Interface web d'un intranet connecté en tant que Roger">
                 <figcaption>
-                    Capture d'écran de la description du défi "La Traque Partie 2".
+                    Les fonctionnalités de l'application web.
                 </figcaption>
             </figure>
             <figure>
-                <img src="/assets/5_las_vegas_airport.jpg" alt="Vue aérienne de l'aéroport de Las Vegas" height="750px">
+                <img src="/assets/promote_ui.png" alt="Interface web montrant la promotion temporaire de Roger en Chef">
                 <figcaption>
-                    Capture d'écran de la vue aérienne de l'aéroport de Las Vegas.
+                    Le système de promotion où on est promu le tant du traitement de la requête mais on ne peux pas retourner au menu.
                 </figcaption>
             </figure>
-            <!--<figure>
-                <img src="/assets/" alt="">
-                <figcaption>
-                </figcaption>
-            </figure> -->
         </section>
     </main>
 
     <footer>
-        <p><a href="index.html">Retour à l'accueil de l'équipe</a></p>
+        <p>
+            <a href="#">Retour en haut de la page</a>
+            |
+            <a href="index.html">Retour à l'accueil de l'équipe</a>
+        </p>
     </footer>
 </body>
 </html>
