@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NGGYU - Mattéo Roumagere</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <header>
+        <h1>Mattéo Roumagere</h1>
+    </header>
+
+    <nav>
+        <a class="important-link" href="/index.html">Accueil</a>
+        <br/>
+        <a href="#echo-de-labime1">Écho de l'Abîme - Décodage sonar Morse</a>
+        <a href="#echo-de-labime2">Écho de l'Abîme - Reconstruction de fragments</a>
+        <a href="#evlang">EVLang</a>
+        <a href="#expressionnisme">Expressionnisme</a>
+    </nav>
+
+    <main>
+        <section id="echo-de-labime1">
+            <h2>Problématique : Écho de l'Abîme - Décodage sonar Morse</h2>
+
+            <h3>Énoncé / Descriptif</h3>
+            <p>
+                Dans ce problème, on devait simplement décoder du morse international avec python.
+            </p>
+
+            <h3>Résolution</h3>
+            <ol>
+                <li>Trouver le code morse international.</li>
+                <li>Coder un programme répondant aux consignes.</li>
+                <li>Tester le code.</li>
+                <li>Valider le code pour obtenir le flag.</li>
+            </ol>
+
+            <h3>Outil(s) / Ressource(s) utilisé(s)</h3>
+            <ul>
+                <li>Le code morse international</li>
+                <li>Un interpréteur python (fourni)</li>
+            </ul>
+
+            <h3>Difficulté(s) rencontrée(s)</h3>
+            <p>
+                J'ai mis du temps à tester mon code mais je n'ai pas rencontré de difficultés particulières.
+            </p>
+
+            <h3>Ce que j’ai appris</h3>
+            <ul>
+                <li><code>SOS</code> s'écrit <code>... --- ...</code> en morse.</li>
+            </ul>
+
+            <h3>Captures d’écran</h3>
+            <figure>
+                <img src="/assets/instructions_echo_de_l_abime_1.png" alt="Les consignes d'un défi.">
+                <figcaption>
+                    Les consignes du challenge avec un example.
+                </figcaption>
+            </figure>
+            <figure>
+                <img src="/assets/morse_code.jpg" height="750px" alt="La traduction pour chaque lettre en code morse">
+                <figcaption>
+                    Le code morse international.
+                </figcaption>
+            </figure>
+            <figure>
+                <img src="/assets/morse_algorithm.png" alt="Un court programme informatique écrit en python">
+                <figcaption>
+                    L'algorithme créé et utilisé pour obtenir le flag.
+                </figcaption>
+            </figure>
+        </section>
+
+        <section id="echo-de-labime2">
+            <h2>Problématique : Écho de l'Abîme - Reconstruction de fragments</h2>
+
+            <h3>Énoncé / Descriptif</h3>
+            <p>
+                Dans ce défi de programmation, à partir de fragments numérotés dans un ordre quelconque, il fallait remettre ces fragments dans l'ordre.
+            </p>
+
+            <h3>Résolution</h3>
+            <ol>
+                <li>Coder un programme répondant aux consignes.</li>
+                <li>Tester le code.</li>
+                <li>Valider le code pour obtenir le flag.</li>
+            </ol>
+
+            <h3>Outil(s) / Ressource(s) utilisé(s)</h3>
+            <ul>
+                <li>Un interpréteur python (fourni)</li>
+            </ul>
+
+            <h3>Difficulté(s) rencontrée(s)</h3>
+            <p>
+                J'ai mis du temps à tester mon code mais je n'ai pas rencontré de difficultés particulières.
+            </p>
+
+            <h3>Ce que j’ai appris</h3>
+            <ul>
+                <li>Ce problème peut faire référence à la reconstitution de paquets transmis sur un réseau : les paquets n'arrivent pas forcément tous dans l'ordre.</li>
+            </ul>
+
+            <h3>Captures d’écran</h3>
+            <figure>
+                <img src="/assets/instructions_echo_de_l_abime_2.png" alt="Les consignes d'un défi.">
+                <figcaption>
+                    Les consignes du challenge avec un example.
+                </figcaption>
+            </figure>
+            <figure>
+                <img src="/assets/fragments_algorithm.png" alt="Un court programme informatique écrit en python">
+                <figcaption>
+                    L'algorithme créé et utilisé pour obtenir le flag.
+                </figcaption>
+            </figure>
+        </section>
+
+        <section id="evlang">
+            <h2>Problématique : EVLang</h2>
+
+            <h3>Énoncé / Descriptif</h3>
+            <p>
+                Pour résoudre ce challenge, il fallait comprendre et performer de l'ingénierie inversée sur un langage de programmation exotique inconnu pour trouver l'entrée nécessaire au programme pour qu'il aboutisse avec succès.
+                Heureusement, la documentation de ce langage exotique ainsi qu'un simple debugger étaient fournis.
+            </p>
+
+            <h3>Résolution</h3>
+            <ol>
+                <li>Approche du programme : le programme semble s'exécuter dans une grille en deux dimensions. Les mots clés sont des émoticônes. Par exemple : les flèches directionnelles redéfinissent le sens d'exécution, les pancakes ajoutent une valeur au dessus de la pile.</li>
+                <li>Identifier et comprendre les symboles inconnus dans la documentation comme le billet, la machine à sous, la balance, etc.</li>
+                <li>Comprendre le programme global : il ajoute 7 valeurs au dessus de la pile, ensuite, pour chaque valeur en mémoire, tant qu'elle n'est pas 0, il soustrait 67 à cette dernière. Il compare le résultat obtenu avec celui étant dans la pile au début de l'exécution. Si une comparaison échoue, le programme échoue.</li>
+                <li>Autrement dit, pour chaque valeur <code>x</code> dans la pile à l'initialisation, <code>x+67</code> doit se trouver dans la mémoire.</li>
+                <li>Retrouver le mot de passe initial avec un script python : <code>''.join(chr(x+67) for x in [-16,-10,33,-2,39,6,30])</code> (Notez que les valeurs sont dans l'ordre inverse car la pile suit le principe LIFO).</li>
+                <li>Soumettre le flag <code>FLAG{39dAjIa}</code> sur la plateforme</li>
+            </ol>
+
+            <h3>Outil(s) / Ressource(s) utilisé(s)</h3>
+            <ul>
+                <li>L'interpréteur fourni</li>
+                <li>La documentation fournie</li>
+                <li>Un interpréteur python (pour reconstituer le mot de passe original)</li>
+            </ul>
+
+            <h3>Difficulté(s) rencontrée(s)</h3>
+            <p>
+                J'ai mis du temps à comprendre le fonctionnement du langage de programmation malgré la documentation.
+                Je me suis aussi trompé dans l'ordre de la pile.
+            </p>
+
+            <h3>Ce que j’ai appris</h3>
+            <ul>
+                <li>Introduction à l'ingénierie inversée.</li>
+                <li>Ce challenge est un exemple de langage exotique mélangeant le befunge et les émoticônes.</li>
+                <li>Première approche des debuggers et de la méthode pas à pas.</li>
+            </ul>
+
+            <h3>Captures d’écran</h3>
+            <figure>
+                <img src="/assets/evlang_doc.png" alt="Documentation associant des symboles (ici, des émoticônes) à leur description (à quoi ces symboles servent dans le langage de programmation)">
+                <figcaption>
+                    Extrait de la documentation du langage EVLang.
+                </figcaption>
+            </figure>
+            <figure>
+                <img src="/assets/evlang_program.png" alt="À droite, un quadrillage partiellemnt rempli avec des émoticônes. À gauche, un encadré montrant la pile vide et un second encadré permettant de contrôler le mémoire. En dessous de ces encadrés, des boutons qui contrôlent l'exécution du programme.">
+                <figcaption>
+                    Programme à analyser. Le point de départ est la case en haut à gauche; direction : haut.
+                </figcaption>
+            </figure>
+       </section>
+
+        <section id="exprossionnisme">
+            <h2>Problématique : Expressionnisme</h2>
+
+            <h3>Énoncé / Descriptif</h3>
+            <p>
+                Cet objectif consistait à décoder une "chaîne de caractères énigmatique" : <code>^FLAG\{1Z[i|i]_(R3){1}gE(x)\}$</code>.
+                Cette chaîne de caractères est une expression régulière (RegExp).
+            </p>
+
+            <h3>Résolution</h3>
+            <ol>
+                <li>Comprendre le type de chaîne de caractères : expression régulière.</li>
+                <li>Interpréter l'expression <code>^FLAG\{1Z[i|i]_(R3){1}gE(x)\}$</code>.</li>
+                <li><code>^</code> : sélectionne le début d'une ligne.</li>
+                <li><code>FLAG</code> : sélectionne "FLAG".</li>
+                <li><code>\{</code> : correspond au caractère "{" échappé.</li>
+                <li><code>1Z</code> : sélectionne "1Z".</li>
+                <li><code>[i|i]</code> : sélectionne "i" ou "i" &gt;&gt; "i".</li>
+                <li><code>_</code> : sélectionne "_".</li>
+                <li><code>(R3){1}</code> : groupe "R3" sélectionné 1 fois &gt;&gt; "R3".</li>
+                <li><code>gE</code> : sélectionne "gE".</li>
+                <li><code>(x)</code> : groupe "x" &gt;&gt; "x".</li>
+                <li><code>\}</code> : correspond au caractère "}" échappé.</li>
+                <li><code>$</code> : sélectionne la fin d'une ligne.</li>
+                <li><code>FLAG</code> + <code>{</code> + <code>1Z</code> + <code>i</code> + <code>_</code> + <code>R3</code> + <code>gE</code> + <code>x</code> + <code>}</code> = <code>FLAG{1Zi_R3gEx}</code></li>
+                <li>Soumettre le flag <code>FLAG{1Zi_R3gex}</code> sur la plateforme.</li>
+            </ol>
+
+            <h3>Outil(s) / Ressource(s) utilisé(s)</h3>
+            <ul>
+                <li>Syntaxe des expressions régulières sur Wikipédia.</li>
+            </ul>
+
+            <h3>Difficulté(s) rencontrée(s)</h3>
+            <p>
+                La difficulté principale était d'identifier la chaîne de caractères.
+            </p>
+
+            <h3>Ce que j’ai appris</h3>
+            <ul>
+                <li>Les expressions régulières servent à identifier des motifs dans un texte.</li>
+            </ul>
+
+            <h3>Captures d’écran</h3>
+            <figure>
+                <img src="/assets/instructions_expressionnisme.png" alt="Description du défi Expressionnisme">
+                <figcaption>
+                    Énoncé contenant la chaîne de caractères mystérieuse.
+                </figcaption>
+            </figure>
+            <figure>
+                <img src="/assets/regexp_wikipedia.png" alt="Tableau décrivant les opérateurs des expressions régulières avec des exemples" height="750px">
+                <figcaption>
+                    Extrait de documentation issu de Wikipédia.
+                </figcaption>
+            </figure>
+        </section>
+    </main>
+
+    <footer>
+        <p>
+            <a href="#">Retour en haut de la page</a>
+            |
+            <a href="index.html">Retour à l'accueil de l'équipe</a>
+        </p>
+    </footer>
+</body>
+</html>
+
