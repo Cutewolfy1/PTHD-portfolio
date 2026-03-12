@@ -182,55 +182,68 @@ const d_res = await fetch(fetch_url);</pre>
             </figure>
        </section>
 
-        <section id="traque1">
-            <h2>Problématique : La Traque - Partie 1</h2>
+        <section id="connecte4">
+            <h2>Problématique : Connecte 4</h2>
 
             <h3>Énoncé / Descriptif</h3>
             <p>
-                Dans ce défi, il était demandé d'identifier la piste d'un aéroport provenant d'une ville inconnue.
-                Le flag devait être écrit sous la forme : <code>FLAG{trigramme_de_l'aéroport:nom_de_la_piste}</code>.
-                Pour résoudre ce challenge, il fallait d'abord identifier la ville et l'aéroport, puis déterminer la piste exacte.
+                Pour ce challenge, il fallait performer de l'ingénierie inverse pour trouver quatre codes de trois chiffres chacun.
+                Trois codes étaient vérifiés en local par un programme compilé en WebAssembly et le dernier code était vérifié par une fonction JavaScript obfusquée.
             </p>
 
             <h3>Résolution</h3>
             <ol>
-                <li>Analyser la vidéo du décollage depuis l'aéroport pour identifier des indices visuels (bâtiments, paysages, etc.).</li>
-                <li>Utiliser Internet pour identifier la ville et l'aéroport : il s'agissait de Las Vegas, avec le trigramme <code>LAS</code>.</li>
-                <li>Utiliser une IA ou une recherche en ligne pour lister toutes les pistes de l'aéroport de Las Vegas.</li>
-                <li>Tester chaque combinaison possible pour le flag.</li>
-                <li>Soumettre le flag <code>FLAG{LAS:26R}</code> sur la plateforme.</li>
+                <li>Analyser le code JavaScript pour identifier le processus de vérification. Quatre fonctions anonymes sont déclarées, une pour chaque code. Pour avoir un meilleur contrôle sur le code exécuté, on télécharge les ressources du site pour en héberger un autre presque identique, localement. On peut alors accéder aux fonctions <code>num1</code>, <code>num2</code>, <code>num3</code>, <code>num4</code>.</li>
+                <li> Trois des fonctions passent le code entré par l'utilisateur dans trois autres fonctions et vérifient que la valeur retournée par chaque fonction est égale à trois constantes connues. La dernière fonction anonyme fonctionne ainsi: <code>retourne VRAI si num4(29) = code_entré sinon FAUX</code>.</li>
+                <li>Pour cette dernière fonction, il suffit juste de récupérer la valeur <code>num4(29)</code> en écrivant cette même ligne dans la console. On obtient alors <code>841</code> comme quatrième code.</li>
+                <li>Pour les trois autres fonctions, j'ai d'abord pensé à la force brute. En effet, ce sont des codes de trois chiffres donc 1000 possibilités. Même pour la fonction JavaScript obfusquée, cela ne prendra pas plus d'une seconde.</li>
+                <li>En utilisant une simple boucle, j'ai réussi à obtenir les premier et troisème codes (<code>256</code> et <code>771</code>) mais sans succès pour le second. Le processus prenait anormalement trop de temps.</li>
+                <li>Pour le deuxième code, j'ai inspecté le WebAssembly désassemblé pour interpréter le fonctionnement de cette fonction. J'ai d'abord compris d'où venait le ralentissement de la méthode force brute : la fonction attends 1500 millisecondes avant de soustraire le code entré de 999 et de passer le résultat à une autre fonction.</li>
+                <li>Cette dernière fonction est étrange, c'est pourquoi j'ai décidé de convertir les deux fonctions en python pour y voir plus clair.</li>
+                <li>Après implémation des fonctions en python, je simplifie la fonction étrange et me rends compte qu'elle calcule le n-ième terme de la suite de fibonacci mais en ajoutant 11 à chaque terme. C'est une fonction doublement récursive (elle s'appelle deux fois) ce qui rend l'exécution de cette dernière encore plus longue.</li>
+                <li>On réécrit donc la fonciton de façon à ce qu'elle soit itérative et non récursive. On peut maintenant forcer le code en essayant les 1000 possibilités rapidement. On obtient le code <code>968</code>.</li>
+                <li>En les entrant dans l'ordre sur le site (<code>256 - 968 - 771 - 841</code>), on obtient le flag.</li>
             </ol>
 
             <h3>Outil(s) / Ressource(s) utilisé(s)</h3>
             <ul>
-                <li>Internet (recherche d'images et d'informations sur les aéroports).</li>
-                <li>IA ou outils en ligne pour lister les pistes de l'aéroport.</li>
+                <li>Firefox DevTools</li>
+                <li>Un interpréteur python</li>
             </ul>
 
             <h3>Difficulté(s) rencontrée(s)</h3>
             <p>
-                La difficulté principale était d'identifier la ville et l'aéroport à partir d'une vidéo.
-                Ensuite, il fallait être méthodique pour tester chaque combinaison de piste afin de trouver la bonne.
+                Je n'ai pas rencontré de difficultés particulières.
             </p>
 
             <h3>Ce que j’ai appris</h3>
             <ul>
-                <li>L'importance de l'analyse visuelle pour identifier des lieux à partir d'images.</li>
-                <li>L'utilisation d'outils en ligne et d'IA pour compléter des informations manquantes.</li>
-                <li>La persévérance et la méthode pour tester différentes combinaisons.</li>
+                <li>J'ai déduis et compris le fonctionnement du WebAssembly.</li>
             </ul>
 
             <h3>Captures d’écran</h3>
             <figure>
-                <img src="/assets/instructions_la_traque_2.png" alt="Description du défi La Traque Partie 2">
+                <img src="/assets/anonymous_functions.png" alt="Quatre lignes de code JavaScript">
                 <figcaption>
-                    Capture d'écran de la description du défi "La Traque Partie 2".
+                    Les quatre fonctions anonymes qui vérifient si le résultat d'une autre fonction exécutée avec le code entré passé en argument correspond à une constante visible.
                 </figcaption>
             </figure>
             <figure>
-                <img src="/assets/las_vegas_airport.jpg" alt="Vue aérienne de l'aéroport de Las Vegas" height="750px">
+                <img src="/assets/js_brute_force.png" alt="Deux scripts JavaScript presque indentiques">
                 <figcaption>
-                    Capture d'écran de la vue aérienne de l'aéroport de Las Vegas.
+                    Les scripts utilisés pour forcer deux codes.
+                </figcaption>
+            </figure>
+            <figure>
+                <img src="/assets/disassembled_wasm.png" alt="Des instructions écrites en web-assembleur">
+                <figcaption>
+                    La fonction "étrange" en WebAssembly.
+                </figcaption>
+            </figure>
+            <figure>
+                <img src="/assets/python_reimplementation.png" alt="Un script python constitué de deux fonctions et trois définitions équivalentes de la fonction f">
+                <figcaption>
+                    La conversion, simplification et réécriture de l'assembleur. Auxquelles j'ai ajouté une boucle pour forcer le dernier code.
                 </figcaption>
             </figure>
         </section>
