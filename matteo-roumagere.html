@@ -22,7 +22,7 @@
 
     <main>
         <section id="echo-de-labime1">
-            <h2>Problématique : Écho de l'Abîme - Décodage sonar Morse</h2>
+            <h2>Problématique&nbsp;: Écho de l'Abîme - Décodage sonar Morse</h2>
 
             <h3>Énoncé / Descriptif</h3>
             <p>
@@ -75,7 +75,7 @@
         </section>
 
         <section id="echo-de-labime2">
-            <h2>Problématique : Écho de l'Abîme - Reconstruction de fragments</h2>
+            <h2>Problématique&nbsp;: Écho de l'Abîme - Reconstruction de fragments</h2>
 
             <h3>Énoncé / Descriptif</h3>
             <p>
@@ -101,7 +101,7 @@
 
             <h3>Ce que j’ai appris</h3>
             <ul>
-                <li>Ce problème peut faire référence à la reconstitution de paquets transmis sur un réseau : les paquets n'arrivent pas forcément tous dans l'ordre.</li>
+                <li>Ce problème peut faire référence à la reconstitution de paquets transmis sur un réseau&nbsp;: les paquets n'arrivent pas forcément tous dans l'ordre.</li>
             </ul>
 
             <h3>Captures d’écran</h3>
@@ -120,7 +120,7 @@
         </section>
 
         <section id="evlang">
-            <h2>Problématique : EVLang</h2>
+            <h2>Problématique&nbsp;: EVLang</h2>
 
             <h3>Énoncé / Descriptif</h3>
             <p>
@@ -130,11 +130,11 @@
 
             <h3>Résolution</h3>
             <ol>
-                <li>Approche du programme : le programme semble s'exécuter dans une grille en deux dimensions. Les mots clés sont des émoticônes. Par exemple : les flèches directionnelles redéfinissent le sens d'exécution, les pancakes ajoutent une valeur au dessus de la pile.</li>
+                <li>Approche du programme&nbsp;: le programme semble s'exécuter dans une grille en deux dimensions. Les mots clés sont des émoticônes. Par exemple&nbsp;: les flèches directionnelles redéfinissent le sens d'exécution, les pancakes ajoutent une valeur au dessus de la pile.</li>
                 <li>Identifier et comprendre les symboles inconnus dans la documentation comme le billet, la machine à sous, la balance, etc.</li>
-                <li>Comprendre le programme global : il ajoute 7 valeurs au dessus de la pile, ensuite, pour chaque valeur en mémoire, tant qu'elle n'est pas 0, il soustrait 67 à cette dernière. Il compare le résultat obtenu avec celui étant dans la pile au début de l'exécution. Si une comparaison échoue, le programme échoue.</li>
+                <li>Comprendre le programme global&nbsp;: il ajoute 7 valeurs au dessus de la pile, ensuite, pour chaque valeur en mémoire, tant qu'elle n'est pas 0, il soustrait 67 à cette dernière. Il compare le résultat obtenu avec celui étant dans la pile au début de l'exécution. Si une comparaison échoue, le programme échoue.</li>
                 <li>Autrement dit, pour chaque valeur <code>x</code> dans la pile à l'initialisation, <code>x+67</code> doit se trouver dans la mémoire.</li>
-                <li>Retrouver le mot de passe initial avec un script python : <code>''.join(chr(x+67) for x in [-16,-10,33,-2,39,6,30])</code> (Notez que les valeurs sont dans l'ordre inverse car la pile suit le principe LIFO).</li>
+                <li>Retrouver le mot de passe initial avec un script python&nbsp;: <code>''.join(chr(x+67) for x in [-16,-10,33,-2,39,6,30])</code> (Notez que les valeurs sont dans l'ordre inverse car la pile suit le principe LIFO).</li>
                 <li>Soumettre le flag <code>FLAG{39dAjIa}</code> sur la plateforme</li>
             </ol>
 
@@ -168,35 +168,35 @@
             <figure>
                 <img src="./assets/evlang_program.png" alt="À droite, un quadrillage partiellemnt rempli avec des émoticônes. À gauche, un encadré montrant la pile vide et un second encadré permettant de contrôler le mémoire. En dessous de ces encadrés, des boutons qui contrôlent l'exécution du programme.">
                 <figcaption>
-                    Programme à analyser. Le point de départ est la case en haut à gauche; direction : haut.
+                    Programme à analyser. Le point de départ est la case en haut à gauche; direction&nbsp;: haut.
                 </figcaption>
             </figure>
        </section>
 
         <section id="exprossionnisme">
-            <h2>Problématique : Expressionnisme</h2>
+            <h2>Problématique&nbsp;: Expressionnisme</h2>
 
             <h3>Énoncé / Descriptif</h3>
             <p>
-                Cet objectif consistait à décoder une "chaîne de caractères énigmatique" : <code>^FLAG\{1Z[i|i]_(R3){1}gE(x)\}$</code>.
+                Cet objectif consistait à décoder une "chaîne de caractères énigmatique"&nbsp;: <code>^FLAG\{1Z[i|i]_(R3){1}gE(x)\}$</code>.
                 Cette chaîne de caractères est une expression régulière (RegExp).
             </p>
 
             <h3>Résolution</h3>
             <ol>
-                <li>Comprendre le type de chaîne de caractères : expression régulière.</li>
+                <li>Comprendre le type de chaîne de caractères&nbsp;: expression régulière.</li>
                 <li>Interpréter l'expression <code>^FLAG\{1Z[i|i]_(R3){1}gE(x)\}$</code>.</li>
-                <li><code>^</code> : sélectionne le début d'une ligne.</li>
-                <li><code>FLAG</code> : sélectionne "FLAG".</li>
-                <li><code>\{</code> : correspond au caractère "{" échappé.</li>
-                <li><code>1Z</code> : sélectionne "1Z".</li>
-                <li><code>[i|i]</code> : sélectionne "i" ou "i" &gt;&gt; "i".</li>
-                <li><code>_</code> : sélectionne "_".</li>
-                <li><code>(R3){1}</code> : groupe "R3" sélectionné 1 fois &gt;&gt; "R3".</li>
-                <li><code>gE</code> : sélectionne "gE".</li>
-                <li><code>(x)</code> : groupe "x" &gt;&gt; "x".</li>
-                <li><code>\}</code> : correspond au caractère "}" échappé.</li>
-                <li><code>$</code> : sélectionne la fin d'une ligne.</li>
+                <li><code>^</code>&nbsp;: sélectionne le début d'une ligne.</li>
+                <li><code>FLAG</code>&nbsp;: sélectionne "FLAG".</li>
+                <li><code>\{</code>&nbsp;: correspond au caractère "{" échappé.</li>
+                <li><code>1Z</code>&nbsp;: sélectionne "1Z".</li>
+                <li><code>[i|i]</code>&nbsp;: sélectionne "i" ou "i" &gt;&gt; "i".</li>
+                <li><code>_</code>&nbsp;: sélectionne "_".</li>
+                <li><code>(R3){1}</code>&nbsp;: groupe "R3" sélectionné 1 fois &gt;&gt; "R3".</li>
+                <li><code>gE</code>&nbsp;: sélectionne "gE".</li>
+                <li><code>(x)</code>&nbsp;: groupe "x" &gt;&gt; "x".</li>
+                <li><code>\}</code>&nbsp;: correspond au caractère "}" échappé.</li>
+                <li><code>$</code>&nbsp;: sélectionne la fin d'une ligne.</li>
                 <li><code>FLAG</code> + <code>{</code> + <code>1Z</code> + <code>i</code> + <code>_</code> + <code>R3</code> + <code>gE</code> + <code>x</code> + <code>}</code> = <code>FLAG{1Zi_R3gEx}</code></li>
                 <li>Soumettre le flag <code>FLAG{1Zi_R3gex}</code> sur la plateforme.</li>
             </ol>

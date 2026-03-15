@@ -24,7 +24,7 @@
 
     <main>
         <section id="gestion-des-cables">
-            <h2>Problématique : Gestion des câbles</h2>
+            <h2>Problématique&nbsp;: Gestion des câbles</h2>
 
             <h3>Énoncé / Descriptif</h3>
             <p>
@@ -35,15 +35,15 @@
             <ol>
                 <li>Première lecture des messages AIS. On peut déjà éliminer tous les messages n'ayant pas été transmis à <code>12:33:56</code> (heure de l'incident).</li>
                 <li>Il nous reste alors 12 messages AIS. Il faut maintenant les décoder. J'ai donc trouvé une bibliothèque python permettant de faire ainsi.</li>
-                <li>On se rend alors compte qu'il n'y que 8 messages (dont 4 messages contenant 2 parties). Il y a 4 messages de type 1 et quatre messages de type 5, je comprends donc que les 8 messages sont des paires de deux messages car les MMSI renseignés correspondent.</li>
+                <li>On se rend alors compte qu'il n'y que 8 messages (dont 4 messages contenant 2 parties). Il y a quatre messages de type 1 et quatre messages de type 5, je comprends donc que les 8 messages sont des paires de deux messages car les MMSI renseignés correspondent.</li>
                 <li>En combinant les deux types de message, on sait précisément où se trouvait les quatre bateaux à l'heure de l'incident.</li>
                 <li>Le bateau le plus proche est alors le <code>EVERGREEN</code> avec un MMSI <code>607860367</code>.</li>
             </ol>
 
             <h3>Outil(s) / Ressource(s) utilisé(s)</h3>
             <ul>
-                <li>pyais, encodeur et décodeur de messages AIS (<a href="https://github.com/M0r13n/pyais">GitHub</a>)</li>
-                <li>uMap openstreetmap un créateur de cartes (<a href="https://umap.openstreetmap.fr">lien</a>).</li>
+                <li><a href="https://github.com/M0r13n/pyais">pyais</a>, encodeur et décodeur de messages AIS</li>
+                <li><a href="https://umap.openstreetmap.fr">uMap</a> openstreetmap un créateur de cartes.</li>
             </ul>
 
             <h3>Difficulté(s) rencontrée(s)</h3>
@@ -85,7 +85,7 @@
         </section>
 
         <section id="cyberquiz">
-            <h2>Problématique : Cyberquiz</h2>
+            <h2>Problématique&nbsp;: Cyberquiz</h2>
 
             <h3>Énoncé / Descriptif</h3>
             <p>
@@ -94,15 +94,15 @@
 
             <h3>Résolution</h3>
             <ol>
-                <li>Analyser le code source du serveur web. Il y a une requête intéressante : <code>GET /questions</code> qui renvoie toutes les questions/réponse du quiz. Cependant si la provenance de la requête n'est pas locale, la requête est rejetée.</li>
+                <li>Analyser le code source du serveur web. Il y a une requête intéressante&nbsp;: <code>GET /questions</code> qui renvoie toutes les questions/réponses du quiz. Cependant si la provenance de la requête n'est pas locale, la requête est rejetée.</li>
                 <li>
-                    Repérer la fonction "vulnérable". Ici, la requête <code>GET /verification</code> contient les lignes suivantes :
+                    Repérer la fonction "vulnérable". Ici, la requête <code>GET /verification</code> contient les lignes suivantes&nbsp;:
                     <pre>const fetch_url = new URL(`http://localhost:3002/${req.query.fetch_endpoint}`);
 ...
 const d_res = await fetch(fetch_url);</pre>
                     Ce qui veut dire que l'on peut demander n'importe quelle resource en contournant la restriction d'origine.
                 </li>
-                <li>On issue alors la requête : <code>GET /verification?fetch_url=questions&amp;qnumber=&amp;answer=</code> et on obtient toutes les réponses du quiz dont le flag.</li>
+                <li>On issue alors la requête&nbsp;: <code>GET /verification?fetch_url=questions&amp;qnumber=&amp;answer=</code> et on obtient toutes les réponses du quiz dont le flag.</li>
                 <li>Soumettre le flag <code>FLAG{V0us_n'êt3s_P4s_Supp0sé_V01r_C3C1}</code> sur la plateforme.</li>
             </ol>
 
@@ -137,7 +137,7 @@ const d_res = await fetch(fetch_url);</pre>
         </section>
 
         <section id="survivant-crescendo">
-            <h2>Problématique : Survivant Crescendo</h2>
+            <h2>Problématique&nbsp;: Survivant Crescendo</h2>
 
             <h3>Énoncé / Descriptif</h3>
             <p>
@@ -147,7 +147,7 @@ const d_res = await fetch(fetch_url);</pre>
             <h3>Résolution</h3>
             <ol>
                 <li>Expérimentation du jeu, il n'a, effectivement, pas l'air possible. Analyse du code du jeu. Le jeu est principalement exécuté en assembleur, mais on trouve une interface pour communiquer en JavaScript.</li>
-                <li>Je remarque la fonction <code>game.apply_upgrade(upgrade_key, mult)</code> permettant de s'octroyer des améliorations démesurées grâce au paramètre <code>mult</code>.</li>
+                <li>Je remarque la méthode <code>game.apply_upgrade(upgrade_key, mult)</code> permettant de s'octroyer des améliorations démesurées grâce au paramètre <code>mult</code>.</li>
                 <li>Exécution de <code>game.apply_upgrade("bassDrop", 1e100);</code> dans la console et victoire peu après.</li>
                 <li>Soumettre le flag <code>FLAG{V@~pireS_W3re_t00_ez}</code> sur la plateforme.</li>
             </ol>
@@ -183,24 +183,24 @@ const d_res = await fetch(fetch_url);</pre>
        </section>
 
         <section id="connecte4">
-            <h2>Problématique : Connecte 4</h2>
+            <h2>Problématique&nbsp;: Connecte 4</h2>
 
             <h3>Énoncé / Descriptif</h3>
             <p>
                 Pour ce challenge, il fallait performer de l'ingénierie inverse pour trouver quatre codes de trois chiffres chacun.
-                Trois codes étaient vérifiés en local par un programme compilé en WebAssembly et le dernier code était vérifié par une fonction JavaScript obfusquée.
+                Trois codes étaient vérifiés en local par un programme compilé en WebAssembly et le dernier code était vérifié par une fonction JavaScript obfusquée, toujours localement.
             </p>
 
             <h3>Résolution</h3>
             <ol>
-                <li>Analyser le code JavaScript pour identifier le processus de vérification. Quatre fonctions anonymes sont déclarées, une pour chaque code. Pour avoir un meilleur contrôle sur le code exécuté, on télécharge les ressources du site pour en héberger un autre presque identique, localement. On peut alors accéder aux fonctions <code>num1</code>, <code>num2</code>, <code>num3</code>, <code>num4</code>.</li>
-                <li>Trois des fonctions passent le code entré par l'utilisateur dans trois autres fonctions et vérifient que la valeur retournée par chaque fonction est égale à trois constantes connues. La dernière fonction anonyme fonctionne ainsi: <code>retourne VRAI si num4(29) = code_entré sinon FAUX</code>.</li>
+                <li>Analyser le code JavaScript pour identifier le processus de vérification. Quatre fonctions anonymes sont déclarées, une pour chaque code. Pour avoir un meilleur contrôle sur le code exécuté, on télécharge les ressources du site pour en héberger un autre presque identique, localement. On peut alors accéder aux fonctions anonymes qui font appel aux fonctions <code>num1</code>, <code>num2</code>, <code>num3</code>, <code>num4</code>.</li>
+                <li>Trois des fonctions passent le code entré par l'utilisateur dans trois autres fonctions et vérifient que la valeur retournée par chaque fonction est égale à trois constantes connues. La dernière fonction anonyme fonctionne ainsi&nbsp;: <code>retourne VRAI si num4(29) = code_entré sinon FAUX</code>.</li>
                 <li>Pour cette dernière fonction, il suffit juste de récupérer la valeur <code>num4(29)</code> en écrivant cette même ligne dans la console. On obtient alors <code>841</code> comme quatrième code.</li>
                 <li>Pour les trois autres fonctions, j'ai d'abord pensé à la force brute. En effet, ce sont des codes de trois chiffres donc 1000 possibilités. Même pour la fonction JavaScript obfusquée, cela ne prendra pas plus d'une seconde.</li>
-                <li>En utilisant une simple boucle, j'ai réussi à obtenir les premier et troisème codes (<code>256</code> et <code>771</code>) mais sans succès pour le second. Le processus prenait anormalement trop de temps.</li>
-                <li>Pour le deuxième code, j'ai inspecté le WebAssembly désassemblé pour interpréter le fonctionnement de cette fonction. J'ai d'abord compris d'où venait le ralentissement de la méthode force brute : la fonction attends 1500 millisecondes avant de soustraire le code entré de 999 et de passer le résultat à une autre fonction.</li>
+                <li>En utilisant une simple boucle, j'ai réussi à obtenir les premier et troisième codes (<code>256</code> et <code>771</code>) mais sans succès pour le second. Le processus prenait anormalement trop de temps.</li>
+                <li>Pour le deuxième code, j'ai inspecté le WebAssembly désassemblé pour interpréter le fonctionnement de cette fonction. J'ai d'abord compris d'où venait le ralentissement de la méthode force brute&nbsp;: la fonction attends 1500 millisecondes avant de soustraire le code entré de 999 et de passer le résultat à une autre fonction.</li>
                 <li>Cette dernière fonction est étrange, c'est pourquoi j'ai décidé de convertir les deux fonctions en python pour y voir plus clair.</li>
-                <li>Après implémation des fonctions en python, je simplifie la fonction étrange et me rends compte qu'elle calcule le n-ième terme de la suite de fibonacci mais en ajoutant 11 à chaque terme. C'est une fonction doublement récursive (elle s'appelle deux fois) ce qui rend l'exécution de cette dernière encore plus longue.</li>
+                <li>Après implémation des fonctions en python, je simplifie la fonction étrange et me rends compte qu'elle calcule le n-ième terme de la suite de Fibonacci mais en ajoutant 11 à chaque terme. C'est une fonction doublement récursive (elle s'appelle deux fois) ce qui rend l'exécution de cette dernière encore plus longue.</li>
                 <li>On réécrit donc la fonciton de façon à ce qu'elle soit itérative et non récursive. On peut maintenant forcer le code en essayant les 1000 possibilités rapidement. On obtient le code <code>968</code>.</li>
                 <li>En les entrant dans l'ordre sur le site (<code>256 - 968 - 771 - 841</code>), on obtient le flag.</li>
             </ol>
@@ -229,9 +229,9 @@ const d_res = await fetch(fetch_url);</pre>
                 </figcaption>
             </figure>
             <figure>
-                <img src="./assets/js_brute_force.png" alt="Deux scripts JavaScript presque indentiques">
+                <img src="./assets/js_brute_force.png" alt="Deux boucles écrites en JavaScript presque indentiques">
                 <figcaption>
-                    Les scripts utilisés pour forcer deux codes.
+                    Les boucles utilisés pour forcer deux codes.
                 </figcaption>
             </figure>
             <figure>
@@ -249,7 +249,7 @@ const d_res = await fetch(fetch_url);</pre>
         </section>
 
         <section id="session-securisee-hostile">
-            <h2>Problématique : Session Sécurisée Hostile</h2>
+            <h2>Problématique&nbsp;: Session Sécurisée Hostile</h2>
 
             <h3>Énoncé / Descriptif</h3>
             <p>
@@ -258,11 +258,11 @@ const d_res = await fetch(fetch_url);</pre>
 
             <h3>Résolution</h3>
             <ol>
-                <li>Inspection des fichiers fournis, des 4 bibliothèques python et du script.</li>
+                <li>Inspection des fichiers fournis, des 4 bibliothèques python et un script python.</li>
                 <li>Ce client semble utiliser le système d'appel de procédure à distance de google (gRPC).</li>
-                <li>En me renseignant sur son fonctionnement, je crois comprendre que le client qu'on m'a fourni contient des éléments superflux : les bibliothèques "client" et "common" ne sont pas nécessaires au fonctionnement de gRPC mais apportent une interface python moins lourde.</li>
-                <li>Après des recherches approfondies, je comprends que les clients gRPC font des appels à des fonctions avec comme arguments des structures sérialisables. En python, les arguments et les appels au fonctions sont représentés par des classes. D'abord, on crée une voie de communication, ensuite on instancie le client et on fait appel aux fonctions qui nous intéressent. Cependant, pour pouvoir sérialiser les structures de données, il faut un fichier protobuf qui spécifie la manière de structurer les donées. Ce fichier nous servira de "documentation" pour connaître les fonctionnalités disponibles.</li>
-                <li>Au lieu de retrouver le fichier dans des fichiers binaires dont la structure m'est inconnue, je décide de moi-même générer ces fichiers inconnus à partir d'informations connues. Je crée donc un fichier <code>.proto</code> à partir de l'example de la documentation en ligne de gRPC. Je compile ce fichier et obtient deux fichiers python. Bien que ces fichiers soient des scripts python et non des bibliothèques compilées, je comprends mieux d'où vient le fichier protobuf. Il est désérialisé à partir de sa version compilée. Heureusement, la version compilée conserve les nom des procédures. Je peux donc rapidement identifier le fichier protobuf intégré à la bibliothèque.</li>
+                <li>En me renseignant sur son fonctionnement, je crois comprendre que le client qu'on m'a fourni contient des éléments superflux&nbsp;: les bibliothèques "client" et "common" ne sont pas nécessaires au fonctionnement de gRPC mais apportent une interface python moins lourde.</li>
+                <li>Après des recherches approfondies, je comprends que les clients gRPC font des appels à des fonctions avec comme arguments des structures sérialisables. En python, les arguments et les appels au fonctions sont représentés par des classes. D'abord, on crée une voie de communication, ensuite on instancie le client et on fait appel aux fonctions qui nous intéressent. Cependant, pour pouvoir sérialiser les structures de données, il faut un fichier protobuf qui spécifie la structure des donées. Ce fichier nous servira de "documentation" pour connaître les fonctionnalités disponibles.</li>
+                <li>Au lieu de retrouver le fichier dans des fichiers binaires dont la structure m'est inconnue, je décide de moi-même générer ces fichiers inconnus à partir d'informations connues. Je crée donc un fichier <code>.proto</code> à partir de l'exemple de la documentation en ligne de gRPC. Je compile ce fichier et obtient deux fichiers python. Bien que ces fichiers soient des scripts python et non des bibliothèques compilées, je comprends mieux d'où vient le fichier protobuf. Il est désérialisé à partir de sa version compilée. Heureusement, la version compilée conserve les nom des procédures. Je peux donc rapidement identifier le fichier protobuf intégré à la bibliothèque.</li>
                 <li>Maintenant qu'on a pu extraire le fichier protobuf, je le désérialise et le convertit en fichier <code>.proto</code>, lisible par l'humain. Je découvre alors les méthodes qui me sont disponibles et je complète le script python donné pour qu'il enregistre un compte administrateur, se connecte avec ce dernier et récupère le flag.</li>
             </ol>
 
@@ -270,14 +270,14 @@ const d_res = await fetch(fetch_url);</pre>
             <ul>
                 <li>Documentation en ligne de <a href="https://grpc.io/docs/">gRPC</a></li>
                 <li>Un interpréteur python</li>
-                <li>Les outils de la bibliothèque grpc pour compiler mes prorpes protobufs</li>
+                <li>Les outils de la bibliothèque grpc pour compiler mes propres fichiers protobufs</li>
             </ul>
 
             <h3>Difficulté(s) rencontrée(s)</h3>
             <p>
                 gRPC est une technologie que je ne connais pas, bien que je comprends maintenant son fonctionnement, la manière dont le client était implémenté reste un mystère pour moi. En conséquence j'ai mis beaucoup de temps à rechercher des éléments des bibliothèques qui n'interagissaient pas directement avec gRPC.
                 <br/>
-                De plus, malgré la capture du flag, je n'ai toujours pas totalement compris le client fourni, seulement les technologies gRPC ce qui rend la résolution ci-dessus floue.
+                De plus, malgré la capture du flag, je n'ai toujours pas totalement compris le client fourni, seulement les technologies gRPC ce qui rend la résolution ci-dessus un peu floue.
             </p>
 
             <h3>Ce que j’ai appris</h3>
@@ -301,7 +301,7 @@ const d_res = await fetch(fetch_url);</pre>
             </figure>
         </section>
         <section id="cuitochette">
-            <h2>Problématique : Cuitochette</h2>
+            <h2>Problématique&nbsp;: Cuitochette</h2>
 
             <h3>Énoncé / Descriptif</h3>
             <p>
@@ -310,14 +310,14 @@ const d_res = await fetch(fetch_url);</pre>
 
             <h3>Résolution</h3>
             <ol>
-                <li>Recherche de flag écrits en brut dans l'éxecutable <code>strings cuitochette | grep -i flag</code>. Sans succès.</li>
-                <li>Importation de l'éxecutable dans ghidra et analyse automatique du logiciel.</li>
+                <li>Recherche de flag écrits en brut dans l'exécutable <code>strings cuitochette | grep -i flag</code>. Sans succès.</li>
+                <li>Importation de l'exécutable dans ghidra et analyse automatique faite par le logiciel.</li>
                 <li>Première lecture de la fonction <code>main</code> et attribution de noms aux variables pour y voir plus clair.</li>
-                <li>Après plusieurs relectures, je comprends que le programme se divise : le parent trace l'enfant et l'enfant exécute une fonction définie au moment de l'exécution. Cette fonction est mise à jour tous les deux caractères du mot de passe entré et ces deux caractères sont fournis à la fonction d'une manière peu conventionnelle.</li>
-                <li>À chaque itération, le processus parent initialise les registres d'usage général <code>RAX</code> et <code>RDX</code> avec deux caractères du mot de passe, ajoute une partie de code après là où l'enfant s'était arrêté et il résume l'exécution de l'enfant. Ce dernier performe plusieurs fois la porte logique ou exclusif entre les registres <code>RAX</code>, <code>RDX</code> et la mémoire après quoi, il déclenche expressément une violation de la segmentation (<code>SIGSEGV</code>) ou il exécute l'instruction <code>int3</code> qui déclenche le signal <code>SIGTRAP</code>. Après avoir passé tous les caractères du mot de passe entré par l'utilisateur, l'enfant se termine et le parent compare le résultat de tous les caractères avec le modèle (correspondant au bon mot de passe).</li>
+                <li>Après plusieurs relectures, je comprends que le programme se divise&nbsp;: le parent trace l'enfant et l'enfant exécute une fonction définie au moment de l'exécution. Cette fonction est mise à jour tous les deux caractères du mot de passe entré et ces deux caractères sont fournis à la fonction d'une manière peu conventionnelle.</li>
+                <li>À chaque itération, le processus parent initialise les registres d'usage général <code>RAX</code> et <code>RDX</code> avec deux caractères du mot de passe, ajoute une partie de code après là où l'enfant s'était arrêté et il résume l'exécution de l'enfant. Ce dernier performe plusieurs fois la porte logique ou exclusif entre les registres <code>RAX</code>, <code>RDX</code> et la mémoire après quoi, il déclenche expressément une violation de la segmentation (<code>SIGSEGV</code>) ou il exécute l'instruction <code>int3</code> qui déclenche le signal <code>SIGTRAP</code>. Après avoir passé tous les caractères du mot de passe entré par l'utilisateur, l'enfant se termine et le parent compare le résultat de tous les caractères modifiés par l'enfant avec le modèle (correspondant au bon mot de passe).</li>
                 <li>Il faut donc faire les opérations ou exclusif dans le sens inverse pour retrouver le mot de passe original.</li>
-                <li>Cependant, la mémoire avec laquelle le mot de passe est "mélangé" est elle-même modifiée pendant l'exécution du programme (juste avant que l'enfant exécute la fonction procédurale). De plus, les morceaux de fonctions ajoutés au fur et à mesure par le parent sont choisis parmi deux espaces mémoire en fonction de la parité de chaque paire de caractère du  mot de passe original.</li>
-                <li>Pour résoudre le problème de la mémoire modifiée à l'exécution, je crée un script python qui va simuler ce changement. Ensuite, bien que les caractères du mot de passe soit mélangés entre eux deux par deux, les ou exclusifs restent reversibles. J'ajoute alors à mon script python une implémentation du procédé inverse. Ce script est maintenant interactif : il me donne une addresse mémoire où je vais trouver le bon morceau de fonction, je le désassemble et récupère deux informations pour les renvoyer au script (le décalage depuis lequel la valeur mémoire est mélangée aux registres et la façon dont ce morceau de fonction se termine : <code>SIGTRAP</code> ou <code>SIGSEGV</code>).</li>
+                <li>Cependant, la mémoire avec laquelle le mot de passe est "mélangée" est elle-même modifiée pendant l'exécution du programme (juste avant que l'enfant exécute la fonction procédurale). De plus, les morceaux de fonctions ajoutés au fur et à mesure par le parent sont choisis parmi deux espaces mémoire en fonction de la parité de chaque paire de caractère du  mot de passe original.</li>
+                <li>Pour résoudre le problème de la mémoire modifiée à l'exécution, je crée un script python qui va simuler ce changement. Ensuite, bien que les caractères du mot de passe soit mélangés entre eux deux par deux, les ou exclusifs restent reversibles. J'ajoute alors à mon script python une implémentation du procédé inverse. Ce script est maintenant interactif&nbsp;: il me donne une addresse mémoire où je vais trouver le bon morceau de fonction, je le désassemble et récupère deux informations pour les renvoyer au script (le décalage depuis lequel la valeur mémoire est mélangée aux registres et la façon dont ce morceau de fonction se termine&nbsp;: <code>SIGTRAP</code> ou <code>SIGSEGV</code>).</li>
                 <li>Finalement, on obtient le flag <code>FLAG{I_pr3feR-sP0on_btw}</code>.</li>
             </ol>
 

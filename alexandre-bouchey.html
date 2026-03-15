@@ -21,7 +21,7 @@
 
     <main>
         <section id="traque2">
-            <h2>Problématique : La Traque - Partie 2</h2>
+            <h2>Problématique&nbsp;: La Traque - Partie 2</h2>
 
             <h3>Énoncé / Descriptif</h3>
             <p>
@@ -33,7 +33,7 @@
             <ol>
                 <li>Le modèle de l'avion était donné dans l'énoncé et la compagnie aérienne était facilement lisible sur l'image.</li>
                 <li>Trouver un plan de cabine correspondant à un Airbus <code>A321neo</code> de la compagnie aérienne <code>DELTA</code>.</li>
-                <li>Identifier les places près de l'aile (correspondant au point de vue de la vidéo) : <code>14F-15F</code>.</li>
+                <li>Identifier les places près de l'aile (correspondant au point de vue de la vidéo)&nbsp;: <code>14F-15F</code>.</li>
             </ol>
             <strong>Déterminer l'aéroport d'arrivée</strong>
             <ol>
@@ -41,7 +41,7 @@
                 <li>Se procurer un plan des USA où les grandes villes y sont annotées.</li>
                 <li>Tracer une droite sur le plan passant par Las Vegas et d'orientation 30° et récupérer les villes les plus proches de la droite.</li>
                 <li>On trouve Salt Lake City, Billings, Regina. Seul Salt Lake City possède un aéroport.</li>
-                <li>Rechercher le trigramme de l'aéroport : <code>SLC</code>.</li>
+                <li>Rechercher le trigramme de l'aéroport&nbsp;: <code>SLC</code>.</li>
             </ol>
 
             <h3>Outil(s) / Ressource(s) utilisé(s)</h3>
@@ -79,7 +79,7 @@
         </section>
 
         <section id="repaire3">
-            <h2>Problématique : Le Repaire - Partie 3</h2>
+            <h2>Problématique&nbsp;: Le Repaire - Partie 3</h2>
 
             <h3>Énoncé / Descriptif</h3>
             <p>
@@ -99,7 +99,7 @@
             <h3>Résolution</h3>
             <ol>
                 <li>On sait que l'on se trouve à Paris car c'est le contexte des défis précédents.</li>
-                <li>On identifie le métro rose : c'est la ligne 7.</li>
+                <li>On identifie le métro rose&nbsp;: c'est la ligne 7.</li>
                 <li>Ne conaissant pas Paris, j'aurais pu demander à une IA les musées desservis par la ligne 7 mais j'ai repéré l'arrêt <code>Palais Royal Musée du Louvre</code>.</li>
                 <li>Dans un des deux sens, deux arrêts après le Louvre, on trouve une correspondance avec la ligne 8 (7 incrémenté) à l'arrêt <code>Opéra</code>.</li>
                 <li>En testant les deux terminus de la ligne 8 en flag, on trouve que le bon flag est <code>FLAG{balard}</code>.</li>
@@ -124,13 +124,13 @@
             <figure>
                 <img src="./assets/plan_metro_paris.png" alt="Carte des lignes de métro à Paris">
                 <figcaption>
-                    Carte m'ayant permis de résoudre le challenge. Source : RATP
+                    Carte m'ayant permis de résoudre le challenge. Source&nbsp;: RATP
                 </figcaption>
             </figure>
         </section>
 
         <section id="petite-sieste">
-            <h2>Problématique : Petite Sieste - Partie 1 & 2</h2>
+            <h2>Problématique&nbsp;: Petite Sieste - Partie 1 & 2</h2>
 
             <h3>Énoncé / Descriptif</h3>
             <p>
@@ -140,7 +140,7 @@
             <h3>Résolution</h3>
             <strong>Trouver le nom du programme malveillant</strong>
             <ol>
-                <li>Analyse du script, je reconnais quelques mots clés : <code>if</code>, <code>for</code>, ...</li>
+                <li>Analyse du script, je reconnais quelques mots clés&nbsp;: <code>if</code>, <code>for</code>, ...</li>
                 <li>Les données sont encodés en Base64, après décodage, je trouve la string <code>"\Backstab64.exe"</code>. Ce fichier est ensuite renommé en un autre nom. C'est donc le nom original du programme malveillant.</li>
                 <li>Soumission du flag <code>FLAG{backstab64.exe}</code>.</li>
             </ol>

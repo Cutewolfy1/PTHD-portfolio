@@ -22,7 +22,7 @@
 
     <main>
         <section id="bienvenue">
-            <h2>Problématique : Bienvenue</h2>
+            <h2>Problématique&nbsp;: Bienvenue</h2>
 
             <h3>Énoncé / Descriptif</h3>
             <p>
@@ -58,7 +58,7 @@
         </section>
 
         <section id="archive-manquante">
-            <h2>Problématique : Archive Manquante</h2>
+            <h2>Problématique&nbsp;: Archive Manquante</h2>
 
             <h3>Énoncé / Descriptif</h3>
             <p>
@@ -71,7 +71,7 @@
                 <li>Importation des images dans un logiciel d'édition d'images (GIMP).</li>
                 <li>Afficher la différence entre 2 calques. On obtient une image noire.</li>
                 <li>L'image obtenu n'est pas totalement noire, il y a plusieurs nuances de noir.</li>
-                <li>En sélectionnant par couleur on aperçoit déjà le flag : <code>FLAG{S4me_1mage_d1fferent_1mage}</code>.</li>
+                <li>En sélectionnant par couleur on aperçoit déjà le flag&nbsp;: <code>FLAG{S4me_1mage_d1fferent_1mage}</code>.</li>
                 <li>Après analyse, on se rend compte que la différence renvoie une image avec 4 nuances de noir, mais seul le "vrai" noir (<code>#000000</code>) dessine le flag.</li>
             </ol>
 
@@ -85,7 +85,7 @@
             <p>
                 Quand j'ai obtenu le résultat de la première différence, je m'attendais à découvrir le flag directement, quand j'ai vu une image noire, j'ai cru que je m'étais trompé et j'ai abandonné cette piste.
                 <br/>
-                J'ai oublié de combiner les calques : je voyais la différence des images mais quand je sélectionnait par couleur, le logiciel sélectionnait en fonction des couleurs du calque.
+                J'ai oublié de combiner les calques&nbsp;: je voyais la différence des images mais quand je sélectionnait par couleur, le logiciel sélectionnait en fonction des couleurs du calque.
             </p>
 
             <h3>Ce que j’ai appris</h3>
@@ -116,7 +116,7 @@
         </section>
 
         <section id="4d-secure">
-            <h2>Problématique : 4-D Sécure</h2>
+            <h2>Problématique&nbsp;: 4-D Sécure</h2>
 
             <h3>Énoncé / Descriptif</h3>
             <p>
@@ -125,8 +125,8 @@
 
             <h3>Résolution</h3>
             <ol>
-                <li>Première approche de l'application web : création d'un profil et exécution d'un transfert d'argent.</li>
-                <li>Les transactions se déroulent ainsi : Vérification des fonds (si l'utilisateur possède assez d'argent), ajout des fonds sur le compte de destination, retrait des fonds du compte de départ.</li>
+                <li>Première approche de l'application web&nbsp;: création d'un profil et exécution d'un transfert d'argent.</li>
+                <li>Les transactions se déroulent ainsi&nbsp;: Vérification des fonds (si l'utilisateur possède assez d'argent), ajout des fonds sur le compte de destination, retrait des fonds du compte de départ.</li>
                 <li>Entre chaque opération, il y a un délai de 3 à 6 secondes ce qui veut dire que pendant 3 secondes, les fonds sont à la fois sur le compte de départ et sur celui de destination. C'est pourquoi, pendant quelques secondes, le montant de la transaction est dupliqué.</li>
                 <li>On appuie alors rapidement 9 fois de suite sur le bouton <code>Lancer la transaction</code> avec un montant de <code>1000</code>. Pendant quelques secondes, on aura alors <code>10x1000 = 10000 &gt; 9000</code> ce qui est assez pour acheter le flag.</li>
                 <li>Soumettre le flag <code>FLAG{It's_0v3r_9O0O!!}</code> sur la plateforme.</li>
@@ -142,7 +142,7 @@
 
             <h3>Ce que j’ai appris</h3>
             <ul>
-                <li>J'ai pu découvrir un autre aspect de la cybersécurité : les attaques basées sur les timings.</li>
+                <li>J'ai pu découvrir un autre aspect de la cybersécurité&nbsp;: les attaques basées sur les timings.</li>
                 <li>Ce n'est pas parce qu'une entreprise dit qu'elle est sécurisée, qu'elle l'est vraiment.</li>
             </ul>
 
@@ -162,7 +162,7 @@
        </section>
 
         <section id="competition-sur-la-toile">
-            <h2>Problématique : Compétition sur la toile</h2>
+            <h2>Problématique&nbsp;: Compétition sur la toile</h2>
 
             <h3>Énoncé / Descriptif</h3>
             <p>
@@ -171,9 +171,9 @@
 
             <h3>Résolution</h3>
             <ol>
-                <li>Analyse de l'application web : on peut consulter les informations ou demander une promotion. Au début, on ne dispose pas d'informations.</li>
-                <li>La procédure pour promouvoir un utilisateur se déroule ainsi : promouvoir l'utilisateur <code>Chef</code>, attendre la confirmation du serveur tout en empêchant l'utilisateur de retourner à la page d'accueil. Dans tous les cas, la requête sera rejetée donc : dégrader l'utilisateur <code>Subordonné</code>.</li>
-                <li>Bien que l'on ne puisse pas retourner à la page d'accueil pour récupérer les informations durant la promotion. On peut ouvrir deux pages web : une pour se faire promouvoir et l'autre demandant les informations pendant le temps où on est promu.</li>
+                <li>Analyse de l'application web&nbsp;: on peut consulter les informations ou demander une promotion. Au début, on ne dispose pas d'informations.</li>
+                <li>La procédure pour promouvoir un utilisateur se déroule ainsi&nbsp;: promouvoir l'utilisateur <code>Chef</code>, attendre la confirmation du serveur tout en empêchant l'utilisateur de retourner à la page d'accueil. Dans tous les cas, la requête sera rejetée donc&nbsp;: dégrader l'utilisateur <code>Subordonné</code>.</li>
+                <li>Bien que l'on ne puisse pas retourner à la page d'accueil pour récupérer les informations durant la promotion. On peut ouvrir deux pages web&nbsp;: une pour se faire promouvoir et l'autre demandant les informations pendant le temps où on est promu.</li>
                 <li>Soumettre le flag sur la plateforme.</li>
             </ol>
 
