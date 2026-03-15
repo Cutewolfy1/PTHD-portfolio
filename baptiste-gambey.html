@@ -194,7 +194,7 @@ const d_res = await fetch(fetch_url);</pre>
             <h3>Résolution</h3>
             <ol>
                 <li>Analyser le code JavaScript pour identifier le processus de vérification. Quatre fonctions anonymes sont déclarées, une pour chaque code. Pour avoir un meilleur contrôle sur le code exécuté, on télécharge les ressources du site pour en héberger un autre presque identique, localement. On peut alors accéder aux fonctions <code>num1</code>, <code>num2</code>, <code>num3</code>, <code>num4</code>.</li>
-                <li> Trois des fonctions passent le code entré par l'utilisateur dans trois autres fonctions et vérifient que la valeur retournée par chaque fonction est égale à trois constantes connues. La dernière fonction anonyme fonctionne ainsi: <code>retourne VRAI si num4(29) = code_entré sinon FAUX</code>.</li>
+                <li>Trois des fonctions passent le code entré par l'utilisateur dans trois autres fonctions et vérifient que la valeur retournée par chaque fonction est égale à trois constantes connues. La dernière fonction anonyme fonctionne ainsi: <code>retourne VRAI si num4(29) = code_entré sinon FAUX</code>.</li>
                 <li>Pour cette dernière fonction, il suffit juste de récupérer la valeur <code>num4(29)</code> en écrivant cette même ligne dans la console. On obtient alors <code>841</code> comme quatrième code.</li>
                 <li>Pour les trois autres fonctions, j'ai d'abord pensé à la force brute. En effet, ce sont des codes de trois chiffres donc 1000 possibilités. Même pour la fonction JavaScript obfusquée, cela ne prendra pas plus d'une seconde.</li>
                 <li>En utilisant une simple boucle, j'ai réussi à obtenir les premier et troisème codes (<code>256</code> et <code>771</code>) mais sans succès pour le second. Le processus prenait anormalement trop de temps.</li>
@@ -244,6 +244,114 @@ const d_res = await fetch(fetch_url);</pre>
                 <img src="/assets/python_reimplementation.png" alt="Un script python constitué de deux fonctions et trois définitions équivalentes de la fonction f">
                 <figcaption>
                     La conversion, simplification et réécriture de l'assembleur. Auxquelles j'ai ajouté une boucle pour forcer le dernier code.
+                </figcaption>
+            </figure>
+        </section>
+
+        <section id="session-securisee-hostile">
+            <h2>Problématique : Session Sécurisée Hostile</h2>
+
+            <h3>Énoncé / Descriptif</h3>
+            <p>
+                Pour résoudre ce défi, il fallait analyser un client pour comprendre le protocole utilisé et récupérer le flag sur un serveur distant.
+            </p>
+
+            <h3>Résolution</h3>
+            <ol>
+                <li>Inspection des fichiers fournis, des 4 bibliothèques python et du script.</li>
+                <li>Ce client semble utiliser le système d'appel de procédure à distance de google (gRPC).</li>
+                <li>En me renseignant sur son fonctionnement, je crois comprendre que le client qu'on m'a fourni contient des éléments superflux : les bibliothèques "client" et "common" ne sont pas nécessaires au fonctionnement de gRPC mais apportent une interface python moins lourde.</li>
+                <li>Après des recherches approfondies, je comprends que les clients gRPC font des appels à des fonctions avec comme arguments des structures sérialisables. En python, les arguments et les appels au fonctions sont représentés par des classes. D'abord, on crée une voie de communication, ensuite on instancie le client et on fait appel aux fonctions qui nous intéressent. Cependant, pour pouvoir sérialiser les structures de données, il faut un fichier protobuf qui spécifie la manière de structurer les donées. Ce fichier nous servira de "documentation" pour connaître les fonctionnalités disponibles.</li>
+                <li>Au lieu de retrouver le fichier dans des fichiers binaires dont la structure m'est inconnue, je décide de moi-même générer ces fichiers inconnus à partir d'informations connues. Je crée donc un fichier <code>.proto</code> à partir de l'example de la documentation en ligne de gRPC. Je compile ce fichier et obtient deux fichiers python. Bien que ces fichiers soient des scripts python et non des bibliothèques compilées, je comprends mieux d'où vient le fichier protobuf. Il est désérialisé à partir de sa version compilée. Heureusement, la version compilée conserve les nom des procédures. Je peux donc rapidement identifier le fichier protobuf intégré à la bibliothèque.</li>
+                <li>Maintenant qu'on a pu extraire le fichier protobuf, je le désérialise et le convertit en fichier <code>.proto</code>, lisible par l'humain. Je découvre alors les méthodes qui me sont disponibles et je complète le script python donné pour qu'il enregistre un compte administrateur, se connecte avec ce dernier et récupère le flag.</li>
+            </ol>
+
+            <h3>Outil(s) / Ressource(s) utilisé(s)</h3>
+            <ul>
+                <li>Documentation en ligne de <a href="https://grpc.io/docs/">gRPC</a></li>
+                <li>Un interpréteur python</li>
+                <li>Les outils de la bibliothèque grpc pour compiler mes prorpes protobufs</li>
+            </ul>
+
+            <h3>Difficulté(s) rencontrée(s)</h3>
+            <p>
+                gRPC est une technologie que je ne connais pas, bien que je comprends maintenant son fonctionnement, la manière dont le client était implémenté reste un mystère pour moi. En conséquence j'ai mis beaucoup de temps à rechercher des éléments des bibliothèques qui n'interagissaient pas directement avec gRPC.
+                <br/>
+                De plus, malgré la capture du flag, je n'ai toujours pas totalement compris le client fourni, seulement les technologies gRPC ce qui rend la résolution ci-dessus floue.
+            </p>
+
+            <h3>Ce que j’ai appris</h3>
+            <ul>
+                <li>Découverte du concept RPC et de la technologie gRPC.</li>
+                <li>Essayer les technologies par soi-même avant d'essayer de comprendre des implémentations tentaculaires.</li>
+            </ul>
+
+            <h3>Captures d’écran</h3>
+            <figure>
+                <img src="/assets/deserialized_protobuf.png" alt="Extrait d'un fichier protobuf (fichier texte avec des sections imbriquées)">
+                <figcaption>
+                    Extrait du fichier protobuf sérialisé et lisible par l'humain.
+                </figcaption>
+            </figure>
+            <figure>
+                <img src="/assets/edited_script.png" alt="Un script python qui implémente des appels de procédures à distance">
+                <figcaption>
+                    Le script python fourni. Les modifications sont surlignées.
+                </figcaption>
+            </figure>
+        </section>
+        <section id="cuitochette">
+            <h2>Problématique : Cuitochette</h2>
+
+            <h3>Énoncé / Descriptif</h3>
+            <p>
+                Pour ce challenge, il fallait performer de l'ingénierie inverse pour reconstituer le seul mot de passe valide d'un exécutable binaire. Ce mot de passe fait office de flag.
+            </p>
+
+            <h3>Résolution</h3>
+            <ol>
+                <li>Recherche de flag écrits en brut dans l'éxecutable <code>strings cuitochette | grep -i flag</code>. Sans succès.</li>
+                <li>Importation de l'éxecutable dans ghidra et analyse automatique du logiciel.</li>
+                <li>Première lecture de la fonction <code>main</code> et attribution de noms aux variables pour y voir plus clair.</li>
+                <li>Après plusieurs relectures, je comprends que le programme se divise : le parent trace l'enfant et l'enfant exécute une fonction définie au moment de l'exécution. Cette fonction est mise à jour tous les deux caractères du mot de passe entré et ces deux caractères sont fournis à la fonction d'une manière peu conventionnelle.</li>
+                <li>À chaque itération, le processus parent initialise les registres d'usage général <code>RAX</code> et <code>RDX</code> avec deux caractères du mot de passe, ajoute une partie de code après là où l'enfant s'était arrêté et il résume l'exécution de l'enfant. Ce dernier performe plusieurs fois la porte logique ou exclusif entre les registres <code>RAX</code>, <code>RDX</code> et la mémoire après quoi, il déclenche expressément une violation de la segmentation (<code>SIGSEGV</code>) ou il exécute l'instruction <code>int3</code> qui déclenche le signal <code>SIGTRAP</code>. Après avoir passé tous les caractères du mot de passe entré par l'utilisateur, l'enfant se termine et le parent compare le résultat de tous les caractères avec le modèle (correspondant au bon mot de passe).</li>
+                <li>Il faut donc faire les opérations ou exclusif dans le sens inverse pour retrouver le mot de passe original.</li>
+                <li>Cependant, la mémoire avec laquelle le mot de passe est "mélangé" est elle-même modifiée pendant l'exécution du programme (juste avant que l'enfant exécute la fonction procédurale). De plus, les morceaux de fonctions ajoutés au fur et à mesure par le parent sont choisis parmi deux espaces mémoire en fonction de la parité de chaque paire de caractère du  mot de passe original.</li>
+                <li>Pour résoudre le problème de la mémoire modifiée à l'exécution, je crée un script python qui va simuler ce changement. Ensuite, bien que les caractères du mot de passe soit mélangés entre eux deux par deux, les ou exclusifs restent reversibles. J'ajoute alors à mon script python une implémentation du procédé inverse. Ce script est maintenant interactif : il me donne une addresse mémoire où je vais trouver le bon morceau de fonction, je le désassemble et récupère deux informations pour les renvoyer au script (le décalage depuis lequel la valeur mémoire est mélangée aux registres et la façon dont ce morceau de fonction se termine : <code>SIGTRAP</code> ou <code>SIGSEGV</code>).</li>
+                <li>Finalement, on obtient le flag <code>FLAG{I_pr3feR-sP0on_btw}</code>.</li>
+            </ol>
+
+            <h3>Outil(s) / Ressource(s) utilisé(s)</h3>
+            <ul>
+                <li>Ghidra</li>
+                <li>Un interpréteur python</li>
+                <li>Les pages de manuel GNU/Linux</li>
+            </ul>
+
+            <h3>Difficulté(s) rencontrée(s)</h3>
+            <p>
+                Il fallait comprendre que le processus créait un enfant et qu'il le traçait.
+                De plus, il fallait anticiper le fait que la mémoire changeait pendant l'exécution.
+                <br/>
+                Bien que ces aspects ne me soient pas directement venus à l'esprit, j'ai fini par comprendre l'entièreté du programme.
+            </p>
+
+            <h3>Ce que j’ai appris</h3>
+            <ul>
+                <li>Introduction aux méthodes de débogage (ptrace, waitpid, etc.) utilisées par le programme.</li>
+            </ul>
+
+            <h3>Captures d’écran</h3>
+            <figure>
+                <img src="/assets/cuitochette_flow_chart.png" alt="Logigramme démontrant la complexité (relative) du programme">
+                <figcaption>
+                    La représentation du programme en logigramme.
+                </figcaption>
+            </figure>
+            <figure>
+                <img src="/assets/decoding_script.png" alt="Un script python manipulant des octets en fonction de l'entrée obtenue">
+                <figcaption>
+                    Le script interactif avec les opération ou exclusif surlginés.
                 </figcaption>
             </figure>
         </section>
